@@ -37,16 +37,16 @@ app.get("/", (req, res) => {
   res.send("Server is working");
 });
 if(process.env.NODE_ENV === "production") {
-  const distPath = Path.join(__dirname, "../front-end/dist");
+  const distPath = Path.join(__dirname, "/front-end/dist");
 if (!fs.existsSync(distPath)) {
   console.error("ERROR: dist folder not found at", distPath);
 } else {
   console.log("dist folder found at", distPath);
 }
-  app.use(express.static(Path.join(__dirname, "../front-end/dist")));
+  app.use(express.static(Path.join(__dirname, "/front-end/dist")));
   
   app.get("*", (req, res) => {
-    res.sendFile(Path.join(__dirname, "../front-end/dist/index.html"));
+    res.sendFile(Path.join(__dirname, "/front-end/dist/index.html"));
   });
 }
 
