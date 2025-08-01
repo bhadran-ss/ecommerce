@@ -43,11 +43,11 @@ if (!fs.existsSync(distPath)) {
 } else {
   console.log("dist folder found at", distPath);
 }
-  app.use(express.static(Path.join(__dirname, "/front-end/dist")));
+  // app.use(express.static(Path.join(__dirname, "/front-end/dist")));
   
-  app.get("*", (req, res) => {
-    res.sendFile(Path.join(__dirname, "/front-end/dist/index.html"));
-  });
+  // app.get("*", (req, res) => {
+  //   res.sendFile(Path.join(__dirname, "/front-end/dist/index.html"));
+  // });
 }
 
 app.listen(PORT, () => {
