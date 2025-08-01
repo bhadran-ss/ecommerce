@@ -65,6 +65,7 @@ export const useUserStore = create((set, get) => ({
       return response.data;
     } catch (error) {
       set({ user: null });
+      get().logout();
       throw error;
     } finally {
       refreshPromise = null;
