@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import cookieParser from "cookie-parser";
+import fs from "fs";
 import cors from "cors";
 import Path from "path";
 
@@ -36,6 +37,12 @@ app.get("/", (req, res) => {
   res.send("Server is working");
 });
 if(process.env.NODE_ENV === "production") {
+  const distPath = Path.join(__dirname, "../front-end/dist");
+if (!fs.existsSync(distPath)) {
+  console.error("ERROR: dist folder not found at", distPath);
+} else {
+  console.log("dist folder found at", distPath);
+}
   app.use(express.static(Path.join(__dirname, "../front-end/dist")));
   
   app.get("*", (req, res) => {
